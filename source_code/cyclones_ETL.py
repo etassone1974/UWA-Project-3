@@ -1,87 +1,15 @@
 import pandas as pd
-import pymongo
 import numpy as np
 from geopy.geocoders import Nominatim
 
 def ETL_process():
-    # Cities Data
-    #####################################################
-    # url to scrape for the city population
-    cities_url ="https://worldpopulationreview.com/world-cities"
-    # Use pandas `read_html` to parse the url
-    df_cityPop = pd.read_html(cities_url, header=0)[0]
-    # rename the columns
-    df_cityPop.rename(columns={'Name':'City', 
-                            '2020 Population':'2020',
-                            '2019 Population':'2019'
-                            },inplace=True)
-    # Replace null values with 0
-    df_cityPop.fillna(0,inplace = True)
-    #  converting column 2019 from float to int
-    df_cityPop['2019'] = df_cityPop['2019'].apply(np.int32)
-
-
-
-    # Using geopy for coordinates of top 10 cities
-    #####################################################
-    # creating a dataframe with coordinates
-    cities = []
-    # iterate through top 10 rows
-    for row in df_cityPop.head(10).itertuples():
-        try:
-            geolocator = Nominatim(user_agent="population_analysis")
-            city = row[2]
-            country = row[3]
-            loc = geolocator.geocode(city+','+ country)
-            
-            cities.append({"City": city,
-                        "Country": country,
-                        "Latitude": loc.latitude, 
-                        "Longitude": loc.longitude}) 
-        except:
-            print("City not found. Skipping...") 
-
-    city_df = pd.DataFrame(cities)
-    # merging city dataframes 
-    df_cityPop = df_cityPop.merge(city_df, on=["City","Country"], how="left")
-    # Replace null values with 0
-    df_cityPop.fillna(0,inplace = True)
-    #####################################################
-
-
-
-
-    # Scraping Country codes to merge datasets with
-    #####################################################
-    # url to scrape for ISO 3166 country codes Alpha-2 and Alpha-3 from www.iban.com
-    country_code_url ="https://www.iban.com/country-codes"
-    # Use panda's `read_html` to parse the url
-    df_countryCode = pd.read_html(country_code_url, header=0)[0]
-    # eliminating unnessasary data
-    df_countryCode = df_countryCode.iloc[:,[1,2]]
-    # rename the columns
-    df_countryCode.rename(columns={'Alpha-2 code':'Country_Code_2',
-                                'Alpha-3 code':'Country_Code'
-                                },inplace=True)
-    #####################################################
-
 
     # Countries Population Data
     #####################################################
     # read Countries population data from csv(source:https://worldpopulationreview.com) into dataframe
-    df_countries = pd.read_csv('static/data/countriesData.csv')
-    # rename the columns
-    df_countries.rename(columns={'cca2':'Country_Code_2',
-                                'name':'Country',
-                                'pop2050':'2050',
-                                'pop2030':'2030',
-                                'pop2020':'2020',
-                                'pop1980':'1980',
-                                'pop1970':'1970'
-                                },inplace=True)
-
-    # eliminating flag column and rerodering
-    df_countries = df_countries.iloc[:,[0,1,4,5,2,10,11,12,13,14,15,16]]
+    cyclones_df = pd.read_csv('../Cyclone_1990_clean.csv')
+        
+    print(cyclones_df)
 
     # Removing decimal point from data
     col_list = ['2050','2030','2020','1980','1970']
