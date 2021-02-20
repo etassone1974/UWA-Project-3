@@ -43,57 +43,37 @@
               </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
           </nav>
+          <div class="container">
+            <div class="jumbotron" style="text-align: center">
+                <h2>Cyclone Predictions</h2>
+                <h3>Enter Cyclone parameters</h3>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8">
+                    <form method="POST" action="/send" role="form", name="petform">
+                        <div class="form-group">
+                            <label for="inputName">Pet Name</label>
+                            <input type="text" class="form-control" id="inputName" name="petName" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputLat">Pet Location Lat</label>
+                            <input type="text" class="form-control" id="inputLat" name="petLat" placeholder="Lat">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputLon">Pet Location Lon</label>
+                            <input type="text" class="form-control" id="inputLon" name="petLon" placeholder="Lon">
+                        </div>
+                        <input type="submit" value="submit" class="btn btn-default">
+                    </form>
+                </div>
+          
+
         <!-- Data Analysis -->
-        <div class="container-fluid">
-          <div class="row">
-           <div class="col-lg-6 col-md-12">
-               <h2>Plot 1</h2>
-               <div class="thumbnail">
-               <img src="../Images/cyclones-figure3-2016.png" style="width: 920px; border-radius: 15px; border: 5px solid rgb(211, 19, 19);">
-               <div id="line1"></div>
-             </div>
-           </div>
-          <div class="col-lg-6 col-md-12">
-               <h2>Plot 2</h2>
-               <div class="thumbnail">
-               <img src="../Images/cyclones-figure3-2016.png" style="width: 920px; border-radius: 15px; border: 5px solid rgb(218, 35, 35);">
-               <div id="line2"></div>
-         </div>
-         </div>
-       </div>
-       <div class="row">
-           <div class="col-lg-6 col-md-12">
-                   <h2>Plot 3</h2>
-                   <div class="thumbnail">
-                     <img src="../Images/cyclones-figure3-2016.png" style="width: 920px; border-radius: 15px; border: 5px solid rgb(211, 19, 19);">
-                     <div id="line1"></div>
-                   </div>
-                 </div>
-                <div class="col-lg-6 col-md-12">
-                     <h2>Plot 4</h2>
-                     <div class="thumbnail">
-                     <img src="../Images/cyclones-figure3-2016.png" style="width: 920px; border-radius: 15px; border: 5px solid rgb(218, 35, 35);">
-                     <div id="line2"></div>
-               </div>
-               </div>
-             </div>
-             <div class="row">
-               <div class="col-lg-6 col-md-12">
-                       <h2>Plot 5</h2>
-                       <div class="thumbnail">
-                         <img src="../Images/cyclones-figure3-2016.png" alt="Rye" style="width: 920px; border-radius: 15px; border: 5px solid rgb(211, 19, 19);">
-                         <div id="line1"></div>
-                       </div>
-                     </div>
-                    <div class="col-lg-6 col-md-12">
-                         <h2>Plot 6</h2>
-                         <div class="thumbnail">
-                         <img src="../Images/cyclones-figure3-2016.png" alt="Rye" style="width: 920px; border-radius: 15px; border: 5px solid rgb(218, 35, 35);">
-                         <div id="line2"></div>
-                   </div>
-                   </div>
-                 </div>
-     </div>
+  <div class="container-fluid bg-3 text-center" style table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    </style> 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
 
