@@ -37,7 +37,7 @@ cyclone_ml_data = pd.read_csv("Cyclone_ML.csv")
 # Flask Routes
 
 # Add predict to route predict
-API.add_resource(Predict, '/predict')
+# API.add_resource(Predict, '/predict')
 
 # create route that renders index.html template
 @app.route("/")
