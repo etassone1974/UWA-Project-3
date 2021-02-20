@@ -1,7 +1,7 @@
 from flask import Flask
 import numpy as np
 from flask_restful import Api
-# from predict import Predict
+from predict import Predict
 import requests
 from example import run_request
 from models import create_classes
