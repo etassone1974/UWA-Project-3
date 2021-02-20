@@ -5,31 +5,134 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pet Pals!</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Cyclone In Australia</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 </head>
 
-<body>
+<body style="background-color:skyblue;">
     <div class="container">
-        <div class="jumbotron" style="text-align: center">
-            <h1>Pet Pal</h1>
-            <p>Find your pet a pal!</p>
+        <div class="menubar" style="background-color:skyblue;text-align: center;color:white">
+            <h1>Cyclone in Australia Since 1990 </h1>
         </div>
-
+        </div>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" class="active" style="color: black; font-size:1.5em;" href="index.html">Home <span class="sr-only">(current)</span></a> 
+              </div>
+          
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav" style="font-size:1.5em;">
+                  <li> <a style="color: black" href="viz1.html">Plots</a></li>
+                  <!-- <li> <a style="color: black" href="#">Maps</a></li> -->
+                  <li> <a style="color: black" href="api.html">API</a></li>
+                  <li> <a style="color: black" href="ml_page.html">Machine Learning</a></li>
+                  <li> <a style="color: black" href="about_us.html">About Us</a></li>
+                  </li>
+                </ul>
+              </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+          </nav>
         <div class="row">
-            <div class="col-md-12">
-                <h2>Look at all of the current pet pals!</h2>
+            <div class="col-md-12" style="text-align: center;color:white;">
+                <div style="width: 100%"><iframe width="80%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Malet%20St,%20London%20WC1E%207HU,%20United%20Kingdom+(Your%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://www.mapsdirections.info/en/measure-map-radius/"></a></div>
                 <div id="plot"></div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <h2><a href="/send">Add your pet here!</a></h2>
-            </div>
-        </div>
+        <!-- Data Analysis -->
+  <div class="container-fluid bg-3 text-center" style table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    </style> 
+    <div class="container"> 
+      <div class="col-md-5 col-sm-12" style="margin-bottom: 50px;width: 400px;">
+        <!-- <div class="table-responsive"> -->
+      <table class="table table-striped ">
+        <h2 style="color: white">Top 10 Cyclones in Australia</h2>
+        <thead>
+          <tr style="text-align: justify;">
+            <th>NAME</th>
+            <th>TYPE</th>
+            <th>DATA_SRC</th>
+            <th>CENTRAL_PRES_MIN</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ROSITA</td>
+            <td>T</td>
+            <td>2.0</td>
+            <td>930.0</td>
+          </tr>
+          <tr>
+            <td>SAM</td>
+            <td>T</td>
+            <td>2.0</td>
+            <td>935.0</td>
+          </tr>
+          <tr>
+            <td>NANCY</td>
+            <td>T</td>
+            <td>4.0</td>
+            <td>980.0</td>
+          </tr>
+          <tr>
+            <td>GREG</td>
+            <td>T</td>
+            <td>4.0</td>
+            <td>990.0</td>
+          </tr>
+          <tr>
+            <td>VINCENT</td>
+            <td>T</td>
+            <td>2.0</td>
+            <td>966.0</td>
+          </tr>
+          <tr>
+            <td>WALTER</td>
+            <td>T</td>
+            <td>2.0</td>
+            <td>940.0</td>
+          </tr>
+          <tr>
+            <td>HILDA</td>
+            <td>T</td>
+            <td>4.0</td>
+            <td>970.0</td>
+          </tr>
+          <tr>
+            <td>IVOR</td>
+            <td>T</td>
+            <td>4.0</td>
+            <td>965.0</td>
+          </tr>
+          <tr>
+            <td>ALEX</td>
+            <td>T</td>
+            <td>2.0</td>
+            <td>927.0</td>
+          </tr>
+          <tr>
+            <td>BESSI</td>
+            <td>T</td>
+            <td>2.0</td>
+            <td>972.0</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
 
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
