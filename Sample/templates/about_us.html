@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cyclone In Australia</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+</head>
+
+<body style="background-color:skyblue;">
+    <div class="container">
+        <div class="menubar" style="background-color:skyblue;text-align: center;color:white">
+            <h1>Cyclone in Australia Since 1990 </h1>
+        </div>
+        </div>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" class="active" style="color: black; font-size:1.5em;" href="index.html">Home <span class="sr-only">(current)</span></a> 
+              </div>
+          
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav" style="font-size:      1.5em;">
+                  <li> <a style="color: black" href="viz1.html">Plots</a></li>
+                  <!-- <li><a style="color: black" href="#">Maps</a></li> -->
+                  <li><a style="color: black" href="api.html">API</a></li>
+                  <li><a style="color: black" href="ml_page.html">Machine Learning</a></li>
+                  <li><a style="color: black" href="about_us.html">About Us</a></li>
+                  </li>
+                </ul>
+              </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+          </nav>
+        <!-- Data Analysis -->
+        <div class="container-fluid bg-3">
+          <div class="container"> 
+             <h2 class="text-center" style="margin-top: 90px;"> <strong>Team Members </strong></h2><br>
+             <hr>       
+             <div class="row" style="margin-bottom: 30px; margin-top: 50px;">
+               <div id='stephen-bio'>
+               <div class="col-sm-4">
+                 <img src="../Images/steve.jpg" alt="Stephen" style="border-radius: 15px; border: 5px solid rgb(255, 255, 255);">
+               </div>
+               <div class="col-sm-8">
+                 <p id="team-par-head"><strong>Stephen Milton</strong></p>
+                 <hr style="background-color:rgba(184, 174, 196, 0.5);">
+                 <p id="team-par">A proactive, insightful and high performing Territory Manager with over 15 years' extensive experience in research, data interpretation & analytics, technical processes, corporate reporting, proactive problem solving and implementation of continuous process improvements across IT, contact centre and transport settings. Comprehensive knowledge and experience in developing analysis tools and reporting that drive impactful changes to operations to surpass standards in quality, performance, productivity and efficiency. Equipped with exceptional analytical, problem-solving, conceptual and critical thinking skills as well as effective communication, organisation and interpersonal strengths. A service oriented professional determined to leverage qualifications and past experience to support the strategic and functional objectives of the organisation.
+                 You can follow Stephen on: </p><br>
+                 <a href='https://www.linkedin.com/in/stephen-milton-4765ab84/' target="_blank"><img class="linkIcons" src="../Images/linkedin-logo.png" style="width: 60px; height: 60px; margin-left: 50px;"></a> 
+                 <a href='https://github.com/Stevemilt' target="_blank"><img class="linkIcons" src="../Images/github-logo.png" style="width: 60px; height: 60px;margin-left: 30px;"></a>   
+               </div>
+               </div>
+             </div> 
+             <div class="row" style="margin-bottom: 200px;margin-top: 50px;">
+               <div id='ezra-bio'>
+               <div class="col-sm-4">
+                 <img src="../Images/ezra.jpg" alt="Ezra" style="border-radius: 15px; border: 5px solid rgb(255, 255, 255);">
+               </div>
+               <div class="col-sm-8">
+                 <p id="team-par-head"><strong>Ezra Tassone</strong></p>
+                 <hr style="background-color:rgba(184, 174, 196, 0.5);">
+                 <p id="team-par">Experienced Computer Science researcher with a background in computer vision and machine learning, a Bachelor and Master’s degree in Computer Science., and a Postgraduate Diploma in Business (majoring Information Systems). A self-motivated, very keen learner with strong problem-solving abilities. Aspiring Data Analyst with current technical skills in Excel, VBA, Python, SQL and JavaScript along with data analytics and visualisation from the University of Western Australia’s Data Analytics Boot Camp.
+                   You can follow Ezra on: </p><br>
+                   <a href='https://www.linkedin.com/in/ezra-tassone-73a3191b3/' target="_blank"><img class="linkIcons" src="../Images/linkedin-logo.png" style="width: 60px; height: 60px; margin-left: 50px;"></a> 
+                   <a href='https://github.com/etassone1974' target="_blank"><img class="linkIcons" src="../Images/github-logo.png" style="width: 60px; height: 60px;margin-left: 30px;"></a>   
+                 </div>
+               </div>
+             </div>
+           </div>
+     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+
+</html>
