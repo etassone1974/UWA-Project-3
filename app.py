@@ -23,10 +23,26 @@ cyclone_ml_data = pd.read_csv("data/Cyclone_ML.csv")
 # Add predict to route predict
 API.add_resource(Predict, '/predict')
 
-# create route that renders index.html template
+# create route that renders html pages
 @app.route("/")
 def home():
     return render_template("index.html")
+
+@app.route("/plots")
+def plots():
+    return render_template("plots.html")
+
+@app.route("/api")
+def api():
+    return render_template("api.html")
+
+@app.route("/ml")
+def ml():
+    return render_template("ml.html")
+
+@app.route("/aboutus")
+def aboutus():
+    return render_template("aboutus.html")
 
 # Example prediction
 @app.route('/example')
@@ -51,10 +67,6 @@ def get_prediction(surface_code=1, cyc_type=20, lat=-11, lon=92.6, central_pres=
 
     response = requests.post(url, data=body)
     return response.json()
-
-@app.route('/api')
-def api():
-    return render_template('api.html') 
 
 @app.route('/api/cyclones')
 def cyclones():
