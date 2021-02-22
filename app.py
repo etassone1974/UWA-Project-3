@@ -21,33 +21,21 @@ API = Api(app)
 # Load database
 # From prepared CSV files
 # Separate files for machine learning and other data due to data source limitations
-cyclone_data = pd.read_csv("Cyclone_1990_clean.csv")
-cyclone_ml_data = pd.read_csv("Cyclone_ML.csv")
+cyclone_data = pd.read_csv("data/Cyclone_1990_clean.csv")
+cyclone_ml_data = pd.read_csv("data/Cyclone_ML.csv")
 
-# from flask_sqlalchemy import SQLAlchemy
-# app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///db.sqlite" #os.environ.get('DATABASE_URL', '') or 
-
-# Remove tracking modifications
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-# db = SQLAlchemy(app)
-
-# Pet = create_classes(db)
 
 # Flask Routes
 
 # Add predict to route predict
-# API.add_resource(Predict, '/predict')
+API.add_resource(Predict, '/predict')
 
 # create route that renders index.html template
 @app.route("/")
 def home():
     return render_template("index.html")
 
-# @app.route("/viz1")
-# def viz1():
-#     return render_template('viz1.html')
-
+# Example prediction
 @app.route('/example')
 def run_example():
     res = run_request()
@@ -64,12 +52,31 @@ def get_prediction(surface_code=1, cyc_type=20, lat=-11, lon=92.6, central_pres=
         "central_pres" : central_pres,
         "max_wind_spd" : max_wind_spd
     }
+
+    # Calculate central_index and add to dictionary
+    body["central_index"] = pow((0.186*(pow(3.45*(1010 - (body["central_pres"])),0.644))),0.746)
+
     response = requests.post(url, data=body)
     return response.json()
 
-# @app.route('/create/<first_name>&<last_name>')
-# def create(first_name=None, last_name=None):
-#   return 'Hello ' + first_name + ',' + last_name
+
+@app.route('/api')
+def api():
+    return render_template('api.html') 
+
+@app.route('/api/cyclones')
+def cyclones():
+    cyclone_json = cyclone_data.to_json(orient="records")
+    cyclone_json_parsed = json.loads(cyclone_json)
+    cyclone_json_string = json.dumps(cyclone_json_parsed, indent=4)  
+    return cyclone_json_string
+
+@app.route('/api/mldata')
+def mldata():
+    ml_json = ml_data.to_json(orient="records")
+    ml_json_parsed = json.loads(ml_json)
+    ml_json_string = json.dumps(ml_json_parsed, indent=4)  
+    return ml_json_string
 
 
 # # Query the database and send the jsonified results

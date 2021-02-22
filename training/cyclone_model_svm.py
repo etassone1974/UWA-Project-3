@@ -4,7 +4,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import accuracy_score
-from sklearn.externals import joblib
+import joblib
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -40,18 +40,18 @@ def train(X,y):
 if __name__ == '__main__':
    
     # Read data into DataFrame from CSV file
-    cyclone_df = pd.read_csv("Cyclone_ML.csv")
+    cyclone_df = pd.read_csv("data/Cyclone_ML.csv")
 
     # Select features for machine learning and assign to X
-    selected_features = cyclone_df[["SURFACE_CODE",	"CYC_TYPE", "LAT", "LON", "CENTRAL_PRES", "MAX_WIND_SPD"]]
+    selected_features = cyclone_df[["SURFACE_CODE",	"CYC_TYPE", "LAT", "LON", "CENTRAL_PRES", "MAX_WIND_SPD", "CENTRAL_INDEX (CI)"]]
     X = selected_features
 
     # Set y to compass direction of cyclone based on wind direction degree
     y = cyclone_df["WIND_COMPASS"]
     print(X.shape, y.shape)
 
-    svc_model = train(X,y)
+    svm_model = train(X,y)
 
     # serialize model
-    joblib.dump(svc_model, '../cyclone_SVC.smd')
+    joblib.dump(svc_model, '../cyclone_SVM.smd')
     print("Model is saved.")
