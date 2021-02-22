@@ -15,12 +15,13 @@ class Predict(Resource):
         parser.add_argument('lon')
         parser.add_argument('central_pres')
         parser.add_argument('max_wind_spd')
+        parser.add_argument('central_index')
 
         # Use parser to create dictionary of data input
         args = parser.parse_args() 
 
         # Add calculated field of central_index to dictionary of data input
-        args["central_index"] = pow((0.186*(pow(3.45*(1010 - (args["central_pres"])),0.644))),0.746)
+        # args["central_index"] = pow((0.186*(pow(3.45*(1010 - (args["central_pres"])),0.644))),0.746)
 
         # Convert input data to array
         X_new = np.fromiter(args.values(), dtype=float) 

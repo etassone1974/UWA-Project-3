@@ -24,10 +24,26 @@ cyclone_ml_data = pd.read_csv("data/Cyclone_ML.csv")
 # Add predict to route predict
 API.add_resource(Predict, '/predict')
 
-# create route that renders index.html template
+# create route that renders html pages
 @app.route("/")
 def home():
     return render_template("index.html")
+
+@app.route("/plots")
+def plots():
+    return render_template("plots.html")
+
+@app.route("/api")
+def api():
+    return render_template("api.html")
+
+@app.route("/ml")
+def ml():
+    return render_template("ml.html")
+
+@app.route("/aboutus")
+def aboutus():
+    return render_template("aboutus.html")
 
 # Example prediction
 @app.route('/example')
@@ -36,7 +52,7 @@ def run_example():
     return res
 
 @app.route('/parameters/<surface_code>&<cyc_type>&<lat>&<lon>&<central_pres>&<max_wind_spd>')
-def get_prediction(surface_code=1, cyc_type=20, lat=-11, lon=92.6, central_pres=1001, max_wind_spd=12.9):
+def get_prediction(surface_code=1, cyc_type=20, lat=-11, lon=92.6, central_pres=1001, max_wind_spd=12.9, central_index=2.064004808):
     url = 'http://127.0.0.1:5000/predict'
     body = {
         "surface_code": surface_code,
@@ -44,18 +60,15 @@ def get_prediction(surface_code=1, cyc_type=20, lat=-11, lon=92.6, central_pres=
         "lat": lat,
         "lon": lon,
         "central_pres" : central_pres,
-        "max_wind_spd" : max_wind_spd
+        "max_wind_spd" : max_wind_spd,
+        "central_index" : central_index
     }
 
     # Calculate central_index and add to dictionary
-    body["central_index"] = pow((0.186*(pow(3.45*(1010 - (body["central_pres"])),0.644))),0.746)
+    # body["central_index"] = pow((0.186*(pow(3.45*(1010 - (body["central_pres"])),0.644))),0.746)
 
     response = requests.post(url, data=body)
     return response.json()
-
-@app.route('/api')
-def api():
-    return render_template('api.html') 
 
 @app.route('/api/cyclones')
 def cyclones():

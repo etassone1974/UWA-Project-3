@@ -10,6 +10,6 @@ def run_request():
         "central_pres" : 994,
         "max_wind_spd" : 20.6,
         "central_index" : 2.721183568
-    }
+    }    
     response = requests.post(url, data=body)
     return response.json()
