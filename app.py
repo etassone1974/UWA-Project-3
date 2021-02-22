@@ -7,6 +7,7 @@ import pandas as pd
 import requests
 import os
 import joblib
+import json
 
 # Create APP
 app = Flask(__name__)
@@ -65,7 +66,7 @@ def cyclones():
 
 @app.route('/api/mldata')
 def mldata():
-    ml_json = ml_data.to_json(orient="records")
+    ml_json = cyclone_ml_data.to_json(orient="records")
     ml_json_parsed = json.loads(ml_json)
     ml_json_string = json.dumps(ml_json_parsed, indent=4)  
     return ml_json_string
