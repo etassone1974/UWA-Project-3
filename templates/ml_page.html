@@ -43,43 +43,30 @@
               </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
           </nav>
-        <div class="row">
-          <div class="col-md-12">
-            <h2 style="font-size: 40px; color: white;text-align: center;">Cyclones in Australia API Documentation</h2>
-            <h4 style="margin-top: 50px;color: white;margin: 20px;">End points</h4>
-          </div>
-          <div class="col-md-2 col-sm-12">
-            <ul>
-              <li><a href="api/population/world"> Cyclone Data Since 1990</a></li>
-
-              <li><a href="api/population/countries">Machine Learning Data</a></li>
-          </ul>
-          </div>
-          <div class="col-md-9 col-sm-12">
-            <ul>
-              <li style="list-style: none;">
-                <p><b>Note: The 0 values and the null values have been removed</b></p>
-              </li>
-              <hr>
-              <li>
-                <a href="api/population/world">Cyclone Data Since 1990</a>
-                <p>Route:  /api/population/world</p>
-                <p>Cyclone Data Since 1990</p>
-                <h4>Example Output</h4>
-                <img src="../static/images/popWorldAPI.png" max-height="500px">
-              </li>
-              <hr>
-              <li><a href="api/population/countries">Machine Learning Data</a></li>
-              <p>Route:  /api/population/countries</p>
-                <p>Machine Learning Data</p>
-                <h4>Example Output</h4>
-                <img src="../static/images/popCountriesAPI.png" max-height="500px">
-              <hr>
-          </div>
-            <div class="col-md-12" style="text-align: center;color:white;">
-                <div id="plot"></div>
+          <div class="container">
+            <div class="jumbotron" style="text-align: center">
+                <h2>Cyclone Predictions</h2>
+                <h3>Enter Cyclone parameters</h3>
             </div>
-        </div>
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8">
+                    <form method="POST" action="/send" role="form", name="petform">
+                        <div class="form-group">
+                            <label for="inputName">Pet Name</label>
+                            <input type="text" class="form-control" id="inputName" name="petName" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputLat">Pet Location Lat</label>
+                            <input type="text" class="form-control" id="inputLat" name="petLat" placeholder="Lat">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputLon">Pet Location Lon</label>
+                            <input type="text" class="form-control" id="inputLon" name="petLon" placeholder="Lon">
+                        </div>
+                        <input type="submit" value="submit" class="btn btn-default">
+                    </form>
+                </div>
+          
 
         <!-- Data Analysis -->
   <div class="container-fluid bg-3 text-center" style table, th, td {
