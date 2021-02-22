@@ -10,10 +10,6 @@ def run_request():
         "central_pres" : 994,
         "max_wind_spd" : 20.6,
         "central_index" : 2.721183568
-    }
-
-    # Calculate central_index and add to dictionary
-    # body["central_index"] = pow((0.186*(pow(3.45*(1010 - (body["central_pres"])),0.644))),0.746)
-    
+    }    
     response = requests.post(url, data=body)
     return response.json()
