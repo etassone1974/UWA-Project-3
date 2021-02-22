@@ -22,5 +22,4 @@ class Predict(Resource):
         X_new = np.fromiter(args.values(), dtype=float) 
         # Generate prediction for a single value
         out = {'Prediction': CYCLONE_MODEL_SVM.predict([X_new])[0]}
-        print("Hello world")
         return out, 200
