@@ -1,0 +1,43 @@
+.menubar {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+@media (max-width: 1200px) {
+    #plot1{
+        width: 500px;
+    }
+}
+@media (max-width: 900px) {
+    #plot1{
+        width: 250px;
+    }
+}
+@media (max-width: 600px) {
+    #plot1{
+        width: 50px;
+    }
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+.jumbotron {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+#team-par-head {
+    font-size: 40px;
+    color: white;
+}
+#team-par {
+    font-size: 20px;
+    color:black;
+}
+.text-center {
+    font-size: 40px;
+}
+#cyclone {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
