@@ -1,18 +1,12 @@
-from flask import Flask
-import numpy as np
 from flask_restful import Api
 from predict import Predict
-import requests
 from example import run_request
-from models import create_classes
-import os
-from flask import (
-    Flask,
-    render_template,
-    jsonify,
-    request,
-    redirect)
+from flask import Flask, render_template, jsonify, request, redirect
+import numpy as np
 import pandas as pd
+import requests
+import os
+import joblib
 
 # Create APP
 app = Flask(__name__)
@@ -23,7 +17,6 @@ API = Api(app)
 # Separate files for machine learning and other data due to data source limitations
 cyclone_data = pd.read_csv("data/Cyclone_1990_clean.csv")
 cyclone_ml_data = pd.read_csv("data/Cyclone_ML.csv")
-
 
 # Flask Routes
 
@@ -58,7 +51,6 @@ def get_prediction(surface_code=1, cyc_type=20, lat=-11, lon=92.6, central_pres=
 
     response = requests.post(url, data=body)
     return response.json()
-
 
 @app.route('/api')
 def api():

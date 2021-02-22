@@ -2,7 +2,7 @@ from flask_restful import Api, Resource, reqparse
 import numpy as np
 import joblib
 # Load prebuilt model
-CYCLONE_MODEL_SVM = joblib.load('../cyclone_svm.smd')
+CYCLONE_MODEL_SVM = joblib.load('training/cyclone_SVM.smd')
 
 # Create predict method
 class Predict(Resource):

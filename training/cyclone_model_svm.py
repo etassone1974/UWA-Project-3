@@ -53,5 +53,5 @@ if __name__ == '__main__':
     svm_model = train(X,y)
 
     # serialize model
-    joblib.dump(svc_model, '../cyclone_SVM.smd')
+    joblib.dump(svc_model, 'cyclone_SVM.smd')
     print("Model is saved.")
