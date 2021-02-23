@@ -1,37 +1,56 @@
 let url = "/api/cyclones";
 
+// https://gist.github.com/SonyaMoisset/aa79f51d78b39639430661c03d9b1058#file-title-case-a-sentence-for-loop-wc-js
+var toTitleCase = function (str) {
+	str = str.toLowerCase().split(' ');
+	for (var i = 0; i < str.length; i++) {
+		str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+	}
+	return str.join(' ');
+};
+
 d3.json(url).then(function(response){
     window.cyclone_name = [];
-    let data = response;
-    for (let i=0; i<data.length; i++) {
-        let cyclone = data[i]["NAME"];
-        // console.log("Name:", cyclone);
-        // console.log(cyclone == "noname");
-        // if (cyclone == "noname")
-        // { 
-        //     console.log("Skipping", cyclone);
-        // }
-        // else if (cyclone == "Unnamed") 
-        // {
-        //     console.log("Skipping", cyclone);
-        // }
-        // else 
-        // {
-            console.log("Accepted name:", cyclone);
-            cyclone_name.push(cyclone);
-            //}
+    let cyclone_data = response;
+    for (let i=0; i < cyclone_data.length; i++) {
+        let new_cyclone = cyclone_data[i]["NAME"];
+        if (new_cyclone == "noname")
+        { 
+            console.log("Skipping", new_cyclone);
         }
-                
-           
-
+        else if (new_cyclone == "Unnamed") 
+        {
+            console.log("Skipping", new_cyclone);
+        }
+        else if (new_cyclone == "unnamed")
+        {
+            console.log("Skipping", new_cyclone);
+        }
+        else if (new_cyclone == "UNNAMED")
+        {
+            console.log("Skipping", new_cyclone);
+        }
+        else 
+        {
+            let cyclone_uppercase = toTitleCase(new_cyclone);
+            // let cyclone_uppercase = new_cyclone.toUpperCase();
+            console.log("Accepted name:", cyclone_uppercase);
+            if (cyclone_name.includes(cyclone_uppercase) == false)
+            {
+                cyclone_name.push(cyclone_uppercase);
+            }
+            
+            
+        }
+    }
     cyclone_name.sort();
     console.log(cyclone_name);
-    // jSuites.dropdown(document.getElementById('dropddown'), {
-    //     data:cyclone_name,
-    //     placeholder:"Name",
-    //     autocomplete: true,
-    //     lazyloading: true,
-    //     multiple: false,
-    //     width: '200px',
-//});
+    jSuites.dropdown(document.getElementById('dropdown'), {
+        data:cyclone_name,
+        placeholder:"Name",
+        autocomplete: true,
+        lazyloading: true,
+        multiple: false,
+        width: '200px',
+});
 });
