@@ -2,20 +2,36 @@ let url = "/api/cyclones";
 
 d3.json(url).then(function(response){
     window.cyclone_name = [];
-    let data = response[0]['data'];
+    let data = response;
     for (let i=0; i<data.length; i++) {
-        console.log(data[i]["Cyclone Name"]);
-        if (data[i]['Cyclone Name'] != "noname") {
-            cyclone_name.push(data[i]["Cyclone Name"]);
+        let cyclone = data[i]["NAME"];
+        // console.log("Name:", cyclone);
+        // console.log(cyclone == "noname");
+        // if (cyclone == "noname")
+        // { 
+        //     console.log("Skipping", cyclone);
+        // }
+        // else if (cyclone == "Unnamed") 
+        // {
+        //     console.log("Skipping", cyclone);
+        // }
+        // else 
+        // {
+            console.log("Accepted name:", cyclone);
+            cyclone_name.push(cyclone);
+            //}
         }
-    }
+                
+           
+
     cyclone_name.sort();
-    jSuites.dropdown(document.getElementById('dropddown'), {
-        data:cyclone_name,
-        placeholder:"Name",
-        autocomplete: true,
-        lazyloading: true,
-        multiple: false,
-        width: '200px',
-});
+    console.log(cyclone_name);
+    // jSuites.dropdown(document.getElementById('dropddown'), {
+    //     data:cyclone_name,
+    //     placeholder:"Name",
+    //     autocomplete: true,
+    //     lazyloading: true,
+    //     multiple: false,
+    //     width: '200px',
+//});
 });
