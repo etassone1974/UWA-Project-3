@@ -51,7 +51,7 @@ def run_example():
     res = run_request()
     return res
 
-@app.route('/parameters/<surface_code>&<cyc_type>&<lat>&<lon>&<central_pres>&<max_wind_spd>')
+@app.route('/parameters/<surface_code>&<cyc_type>&<lat>&<lon>&<central_pres>&<max_wind_spd>&<central_index>')
 def get_prediction(surface_code=1, cyc_type=20, lat=-11, lon=92.6, central_pres=1001, max_wind_spd=12.9, central_index=2.064004808):
     url = 'http://127.0.0.1:5000/predict'
     body = {
@@ -63,10 +63,6 @@ def get_prediction(surface_code=1, cyc_type=20, lat=-11, lon=92.6, central_pres=
         "max_wind_spd" : max_wind_spd,
         "central_index" : central_index
     }
-
-    # Calculate central_index and add to dictionary
-    # body["central_index"] = pow((0.186*(pow(3.45*(1010 - (body["central_pres"])),0.644))),0.746)
-
     response = requests.post(url, data=body)
     return response.json()
 
