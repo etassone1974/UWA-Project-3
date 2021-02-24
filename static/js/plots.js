@@ -1,6 +1,6 @@
 
-// Variables to get population data, birth rates, death rates, sex ratios from JSON URLs
-// Made global for ease of coding after previous development
+// Variables to get cyclone data from JSON URLs
+// Made global for ease of coding 
 var cycloneAllData;
 var timeCentrpres;
 var centperWindspd;
@@ -11,14 +11,14 @@ var timeWindspd;
 // https://gist.github.com/djD-REK/2e347f5532bb22310daf450f03ec6ad8
 const roundOne = (n, d) => Math.round(n * Math.pow(10, d)) / Math.pow(10, d)
 
-// Function to plot line graph of country's population over time
+// Function to plot line graph of cyclone over time
 function displayLineGraph_cycType(cycloneData, cycloneName) {
 
-    // Filter populationData to return only data for matching country name
-    // i.e. Only returns data for the desired country for line graphs
+    // Filter cycloneData to return only data for matching cyclone name
+    // i.e. Only returns data for the desired cyclobe for line graphs
     let cyclone1CYCType = cycloneData.filter(cyclone => cyclone.NAME == cycloneName);
 
-    // Display population data to console for checking
+    // Display cyclone data to console for checking
     // Should be array of length 1
     console.log(cyclone1CYCType);
 
