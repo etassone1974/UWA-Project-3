@@ -21,6 +21,10 @@ d3.json(url).then(function(response){
         { 
             console.log("Skipping", new_cyclone);
         }
+        else if (new_cyclone == "Noname")
+        {
+            console.log("Skipping", new_cyclone);
+        }
         else if (new_cyclone == "Unnamed") 
         {
             console.log("Skipping", new_cyclone);
@@ -36,7 +40,7 @@ d3.json(url).then(function(response){
         else 
         {
             let cyclone_uppercase = toTitleCase(new_cyclone);
-            console.log("Accepted name:", cyclone_uppercase);
+            // console.log("Accepted name:", cyclone_uppercase);
             if (cyclone_name.includes(cyclone_uppercase) == false)
             {
                 cyclone_name.push(cyclone_uppercase);
