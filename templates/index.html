@@ -5,14 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<<<<<<< Updated upstream
     <title>Cyclones In Australia</title>
-=======
-    <title>Cyclones in Australia</title>
->>>>>>> Stashed changes
     <link rel="stylesheet" href="../static/css/style.css">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+ integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+ crossorigin=""></script>
 </head>
 
 <body style="background-color:skyblue;">
@@ -50,7 +53,7 @@
         <div class="row">
             <div class="col-md-12" style="text-align: center;color:white;">
                 <!-- <div style="width: 100%"><iframe width="80%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Malet%20St,%20London%20WC1E%207HU,%20United%20Kingdom+(Your%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="../static/js/map.js"></a></div> -->
-                <div id="map-id"></div>
+                <div id="map-id" style="height: 600px;margin: 30px;align:center;"></div>
             </div>
         </div>
 
@@ -222,14 +225,18 @@
 <!-- API key -->
 <script src="../static/js/config.js"></script>
 <!-- Leaflet JavaScript -->
-<script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q==" crossorigin=""></script>
+<script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+  integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+  crossorigin=""></script>
 
 <!-- Jsuits library for Dropdown -->
 <script src="https://jsuites.net/v3/jsuites.js"></script>
 <!-- Plotly JavaScript -->
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script type="text/javascript" src="../static/js/map.js"></script>
-<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  <!-- Our JS -->
+<!-- <script type="text/javascript" src="logic.js"></script> -->
+<!-- <script src="{{ url_for('static', filename='js/app.js') }}"></script> -->
 </body>
 
 </html>
