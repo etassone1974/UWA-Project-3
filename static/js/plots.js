@@ -61,174 +61,149 @@ function displayLineGraph_cycType(cycloneData, cycloneName) {
 
 
 // // Function to plot line graph of country's birth rates over time
-// function displayLineGraph_centPres(cenpresData, timeData) {
+function displayLineGraph_centPress(cycloneData, cycloneName) {
 
-//     // Filter birthRatesData to return only data for matching country name
-//     // i.e. Only returns data for the desired country for line graphs
-//     let timeCentrpres = cenpresData.filter(name => name.NAME == cycType);
+    // Filter cycloneData to return only data for matching cyclone name
+    // i.e. Only returns data for the desired cyclobe for line graphs
+    let cyclone1CentPress = cycloneData.filter(cyclone => cyclone.NAME == cycloneName);
 
-//     // Display birth rate data to console for checking
-//     // Should be array of length 1
-//     // If array is of length 0, no data recorded for this country
-//     // Set lists to be empty
-//     // Results in empty plot
-//     if (timeCentrpres.length == 0) {
-//         timeCent = [];
-//         centPressure = [];
-//     }
-//     else {
-//         // console.log(countryBirthRate);
-//         // Extract years (keys) and birth rates (values) from data 
-//         timeCent = Object.keys(timeCentrpres[0]);
-//         centPressure = Object.values(timeCentrpres[0]);
-//         // Converting 0 values to null
-//         if(centPressure.indexOf(0) !== -1) {
-//             for (let j=0; j < centPressure.length; j++) {
-//                 centPressure.splice(centPressure.indexOf(0), 1, null);
-//             }
-//         }
-//         // console.log(birthRatesAmounts);
+    // Display cyclone data to console for checking
+    // Should be array of length 1
+    // console.log(cyclone1CentPress);
 
-//     }
-    
-//     // Select the first 10 elements of data for the birth rates
-//     // Convert year string to number
-//     // Plot with both lines and markers for each data point
-//     let lineData_centpress = {
-//         x: timeCent.slice(0,10).map(i => Number(i)),
-//         y: centPressure.slice(0,10),
-//         line: { color: "green"},
-//         markers: { color: "green" },
-//         name: "Cent Pressure",
-//         type: "scatter",
-//         mode: "lines+markers"
-//     };
+    let cycloneTimes = [];
+    let cycloneCentPress = [];
+
+    //for loop to extract the time data for the CYC_TYPE
+    for (let i=0; i < cyclone1CentPress.length; i++) {
+        cycloneTime = cyclone1CentPress[i]['TM'];
+        cycloneCP = cyclone1CentPress[i]['CENTRAL_PRES'];
+        cycloneTimes.push(cycloneTime);
+        cycloneCentPress.push(cycloneCP);
+
+    }
+    console.log(cycloneTimes);
+    console.log(cycloneCentPress);
+
+    // Plot with both lines and markers for each data point
+    let lineData_actual = {
+        x: cycloneTimes,
+        y: cycloneCentPress,
+        name: "Central Pressure Vs Time",
+        type: "scatter",
+        mode: "lines+markers"
+    };
       
-//     // Place data set in array
-//     let lineData = [lineData_centpress];
+    // Place both data sets together in array
+    let lineData = [lineData_actual];
 
-//     // Set title for line graph and x and y axes
-//     let lineLayout = {
-//          title: cycType + " - Central pressure of the cyclone",
-//          xaxis: { title: "Years" },
-//          yaxis: { title: "Central Pressure" }
-//     };
+    // Set title for line graph and x and y axes
+    let lineLayout = {
+         title: "Central Pressure Vs Time",
+         xaxis: { title: "Time" },
+         yaxis: { title: "Central Pressure (hPa)" }
+    };
     
-//     // Use plotly to display line graph at div ID "line2" with lineData and lineLayout
-//     Plotly.newPlot('line2', lineData, lineLayout);
-// }
+    // Use plotly to display line graph at div ID "line2" with lineData and lineLayout
+    Plotly.newPlot('line2', lineData, lineLayout);
+}
+
 
 // // Function to plot line graph of country's death rates over time
-// function displayLineGraph_CentWind(windSpeed, cycType) {
+function displayLineGraph_windSpeed(cycloneData, cycloneName) {
 
-//     // Filter deathRatesData to return only data for matching country name
-//     // i.e. Only returns data for the desired country for line graphs
-//     let centperWindspd = windSpeed.filter(name => name.NAME == cycType);
+    // Filter cycloneData to return only data for matching cyclone name
+    // i.e. Only returns data for the desired cyclobe for line graphs
+    let cyclone1windSpeed = cycloneData.filter(cyclone => cyclone.NAME == cycloneName);
 
-//     // Display death rate data to console for checking
-//     // Should be array of length 1
-//     // If array is of length 0, no data recorded for this country
-//     // Set lists to be empty
-//     // Results in empty plot
-//     if (centperWindspd.length == 0) {
-//         timeWind = [];
-//         centPreWind = [];
-//     }
-//     else {
-//         // console.log(countryDeathRate);
-//         // Extract years (keys) and death rates (values) from data 
-//         timeWind = Object.keys(centperWindspd[0]);
-//         centPreWind = Object.values(centperWindspd[0]);
-//         // Converting 0 values to null
-//         if(centPreWind.indexOf(0) !== -1) {
-//             for (let j=0; j < centPreWind.length; j++) {
-//                 centPreWind.splice(centPreWind.indexOf(0), 1, null);
-//             }
-//         }
-//     }
+    // Display cyclone data to console for checking
+    // Should be array of length 1
+    // console.log(cyclone1windSpeed);
 
-//     // Select the first 10 elements of data for the death rates
-//     // Convert year string to number
-//     // Plot with both lines and markers for each data point
-//     let lineData_windSpeed = {
-//         x: timeWind.slice(0,10).map(i => Number(i)),
-//         y: centPreWind.slice(0,10),
-//         line: { color: "gray"},
-//         markers: { color: "gray" },
-//         name: "Wind Speed",
-//         type: "scatter",
-//         mode: "lines+markers"
-//     };
+    let cycloneTimes = [];
+    let cycloneWindSpeed = [];
+
+    //for loop to extract the time data for the CYC_TYPE
+    for (let i=0; i < cyclone1windSpeed.length; i++) {
+        cycloneTime = cyclone1windSpeed[i]['TM'];
+        cycloneWS = cyclone1windSpeed[i]['MAX_WIND_SPD'];
+        cycloneTimes.push(cycloneTime);
+        cycloneWindSpeed.push(cycloneWS);
+
+    }
+    console.log(cycloneTimes);
+    console.log(cycloneWindSpeed);
+
+    // Plot with both lines and markers for each data point
+    let lineData_actual = {
+        x: cycloneTimes,
+        y: cycloneWindSpeed,
+        name: "Wind Speed Vs Time",
+        type: "scatter",
+        mode: "lines+markers"
+    };
       
-//     // Place data set in array
-//     let lineData = [lineData_windSpeed];
+    // Place both data sets together in array
+    let lineData = [lineData_actual];
 
-//     // Set title for line graph and x and y axes
-//     let lineLayout = {
-//          title: cycType + " Wind Speed",
-//          xaxis: { title: "Years" },
-//          yaxis: { title: "Wind Speed (10 min average winds)" }
-//     };
+    // Set title for line graph and x and y axes
+    let lineLayout = {
+         title: "Max Wind Speed Vs Time",
+         xaxis: { title: "Time" },
+         yaxis: { title: "Max Wind Speed (m/s)" }
+    };
     
-//     // Use plotly to display line graph at div ID "line3" with lineData and lineLayout
-//     Plotly.newPlot('line3', lineData, lineLayout);
-// }
+    // Use plotly to display line graph at div ID "line2" with lineData and lineLayout
+    Plotly.newPlot('line3', lineData, lineLayout);
+}
 
 // // Function to plot line graph of country's death rates over time
-// function displayLineGraph_TimeWind(windTime, cycType) {
+function displayScatterPlot_CentPres_WindSpeed(cycloneData, cycloneName) {
 
-//     // Filter sexRatiosData to return only data for matching country name
-//     // i.e. Only returns data for the desired country for line graphs
-//     let timeWindspd = windTime.filter(name => name.NAME == cycType);
+    // Filter cycloneData to return only data for matching cyclone name
+    // i.e. Only returns data for the desired cyclobe for line graphs
+    let cyclone1CentWind = cycloneData.filter(cyclone => cyclone.NAME == cycloneName);
 
-//     // Display sex ratio data to console for checking
-//     // Should be array of length 1
-//     // If array is of length 0, no data recorded for this country
-//     // Set lists to be empty
-//     // Results in empty plot
-//     if (timeWindspd.length == 0) {
-//         windspdTime = [];
-//         speedTime = [];
-//     }
-//     else {
-//         // console.log(countrySexRatio);
-//         // Extract years (keys) and sex ratios (values) from data 
-//         windspdTime = Object.keys(timeWindspd[0]);
-//         speedTime = Object.values(timeWindspd[0]);
-//         // Converting 0 values to null
-//         if(speedTime.indexOf(0) !== -1) {
-//             for (let j=0; j < speedTime.length; j++) {
-//                 speedTime.splice(speedTime.indexOf(0), 1, null);
-//             }
-//         }
-//     }
-    
-//     // Select the first 10 elements of data for the sex ratios
-//     // Convert year string to number
-//     // Plot with both lines and markers for each data point
-//     let lineData_timeWind = {
-//         x: windspdTime.slice(0,10).map(i => Number(i)),
-//         y: speedTime.slice(0,10),
-//         line: { color: "pink"},
-//         markers: { color: "pink" },
-//         name: "Wind Speed",
-//         type: "scatter",
-//         mode: "lines+markers"
-//     };
+    // Display cyclone data to console for checking
+    // Should be array of length 1
+    // console.log(cyclone1windSpeed);
+
+    let cycloneCentralPressure = [];
+    let cycloneWindSpeed = [];
+
+    //for loop to extract the time data for the CYC_TYPE
+    for (let i=0; i < cyclone1CentWind.length; i++) {
+        cycloneCP = cyclone1CentWind[i]['CENTRAL_PRES'];
+        cycloneWS = cyclone1CentWind[i]['MAX_WIND_SPD'];
+        cycloneCentralPressure.push(cycloneCP);
+        cycloneWindSpeed.push(cycloneWS);
+
+    }
+    console.log(cycloneCentralPressure);
+    console.log(cycloneWindSpeed);
+
+    // Plot with both lines and markers for each data point
+    let lineData_actual = {
+        x: cycloneCentralPressure,
+        y: cycloneWindSpeed,
+        name: "Central Pressure Vs Max Wind Speed",
+        type: "scatter",
+        mode: "markers"
+    };
       
-//     // Place data set in array
-//     let lineData = [lineData_timeWind];
+    // Place both data sets together in array
+    let lineData = [lineData_actual];
 
-//     // Set title for line graph and x and y axes
-//     let lineLayout = {
-//          title: cycType + " Wind Speed over cyclone period",
-//          xaxis: { title: "Years" },
-//          yaxis: { title: "Wind Speed" }
-//     };
+    // Set title for line graph and x and y axes
+    let lineLayout = {
+         title: "Central Pressure Vs Max Wind Speed",
+         xaxis: { title: "Central Pressure (hPa)" },
+         yaxis: { title: "Max Wind Speed (m/s)" }
+    };
     
-//     // Use plotly to display line graph at div ID "line4" with lineData and lineLayout
-//     Plotly.newPlot('line4', lineData, lineLayout);
-// }
+    // Use plotly to display line graph at div ID "line2" with lineData and lineLayout
+    Plotly.newPlot('line4', lineData, lineLayout);
+}
 
 // // Call function to update displays of plots
 // // when the dropdown menu selection is changed
@@ -254,9 +229,9 @@ function optionChanged() {
 
     // Display the graphs for the desired country
     displayLineGraph_cycType(cycloneAllData, cyclone);
-    // displayLineGraph_centPres(timeCentrpre, country);
-    // displayLineGraph_CentWind(centperWindspd, country);
-    // displayLineGraph_TimeWind(timeWindspd, country)
+    displayLineGraph_centPress(cycloneAllData, cyclone);
+    displayLineGraph_windSpeed(cycloneAllData, cyclone);
+    displayScatterPlot_CentPres_WindSpeed(cycloneAllData, cyclone);
 
 }
 
@@ -278,62 +253,10 @@ function init() {
 
         // Display line graph of actual and predicted population for Australia
         displayLineGraph_cycType(cycloneAllData, "Abele");
-
+        displayLineGraph_centPress(cycloneAllData, "Abele");
+        displayLineGraph_windSpeed(cycloneAllData, "Abele");
+        displayScatterPlot_CentPres_WindSpeed(cycloneAllData, "Abele");
     });
-
-    // Name and path to JSON file with dataset for countries birth rates
-    // let birthrateURL = "/api/population/birth";
-
-    // // Read in JSON from URL
-    // d3.json(cyclonesURL).then(function(data) {
-    
-    //     // Assign the birth rate data for all countries to variable countryBirthRates
-    //     timeCentrpres = data;
-
-    //     // Display first country's birth rates to console for checking
-    //     // Countries are in ranked order of population
-    //     // console.log(data[0]);
-
-    //     // Display line graph of birth rates for Australia
-    //     displayLineGraph_centPre(timeCentrpres, "Abele");
-
-    // });
-
-    // // Name and path to JSON file with dataset for countries death rates
-    // // let deathrateURL = "/api/population/death";
-
-    // // Read in JSON from URL
-    // d3.json(cyclonesURL).then(function(data) {
-        
-    //     // Assign the death rate data for all countries to variable countryDeathRates
-    //     centperWindspd = data;
-    
-    //     // Display first country's death rates to console for checking
-    //     // Countries are in ranked order of population
-    //     // console.log(countryDeathRates[0]);
-    
-    //     // Display line graph of death rates for Australia
-    //     displayLineGraph_CentWind(centperWindspd, "Abele");
-    
-    // });
-    
-    // // Name and path to JSON file with dataset for countries sex ratios
-    // // let sexratioURL = "/api/population/sex-ratio";
-
-    // // Read in JSON from URL
-    // d3.json(cyclonesURL).then(function(data) {
-        
-    //     // Assign the sex ratio data for all countries to variable countrySexRatios
-    //     timeWindspd = data;
-    
-    //     // Display first country's sex ratios to console for checking
-    //     // Countries are in ranked order of population
-    //     // console.log(countrySexRatios[0]);
-    
-    //     // Display line graph of sex ratios for Australia
-    //     displayLineGraph_TimeWind(timeWindspd, "Abele");
-    
-    // });
 
 }
 
