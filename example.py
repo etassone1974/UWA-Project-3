@@ -1,7 +1,8 @@
 import requests
 
 def run_request():
-    url = 'http://127.0.0.1:5000/predict'
+    # url = 'http://127.0.0.1:5000/predict'
+    url = 'https://et-cyclonesau.herokuapp.com/predict'
     body = {
         "surface_code": 2,
         "cyc_type": 30,
