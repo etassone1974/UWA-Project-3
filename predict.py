@@ -21,5 +21,8 @@ class Predict(Resource):
         # Convert input data to array
         X_new = np.fromiter(args.values(), dtype=float) 
         # Generate prediction for a single value
-        out = {'Prediction': CYCLONE_MODEL_SVM.predict([X_new])[0]}
+        print("Old X_new =  ", X_new)
+        # X_new = [2,1,1,3,6,6,8]
+        print("New X_new = ", X_new)
+        out = {'Prediction (SVM Model)': CYCLONE_MODEL_SVM.predict([X_new])[0]}
         return out, 200
