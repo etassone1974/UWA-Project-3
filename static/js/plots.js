@@ -277,7 +277,7 @@ function init() {
         console.log(cycloneAllData[0]);
 
         // Display line graph of actual and predicted population for Australia
-        displayLineGraph_cycType(cycloneAllData, "ELMA");
+        displayLineGraph_cycType(cycloneAllData, "Abele");
 
     });
 
