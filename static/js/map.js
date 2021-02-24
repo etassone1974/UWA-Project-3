@@ -13,35 +13,8 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: API_KEY
 }).addTo(myMap);
 
-// Cyclones data
-//var cyclones = JSON.parse('cyclones_top.json');
-
-// let link = ("../static/js/countries.geojson");
-
 let url = ("../static/js/cyclones_top10.json");
 
-// d3.json(link).then(function(data) {
-
-//   L.geoJson(data).addTo(myMap);
-// });
-
-// function colorStyle(point){
-//   // Conditionals for countries points
-//   var color = "";
-//   if (point > 200) {
-//     color = "yellow";
-//   }
-//   else if (point > 100) {
-//     color = "blue";
-//   }
-//   else if (point > 90) {
-//     color = "green";
-//   }
-//   else {
-//     color = "red";
-//   }
-//   return color;
-// }
 
 function cycloneRadius(pressure) {
   let radius = 1010;
@@ -66,6 +39,25 @@ function cycloneRadius(pressure) {
   return radius;
 }
 
+function circleColor(pressure){
+  let color = "";
+  if (pressure < 906){
+    fillColor = "red";
+  }
+  else if (pressure < 916){
+    fillColor = "orange";
+  }
+  else if (pressure < 921){
+    fillColor = "magenta";
+  }
+  else if (pressure < 925){
+    fillColor = "purple";
+  }
+  else {
+    fillColor = "yellow";
+  }
+  return fillColor;
+}
 
 
 d3.json(url).then(function(data) {
@@ -78,61 +70,17 @@ d3.json(url).then(function(data) {
   lat_long = [data[i]["LAT"], data[i]["LON"]];
   L.circle(lat_long, {
     fillOpacity: 0.75,
-    fillColor: 'blue',
-    color: "white",
+    fillColor: circleColor(data[i]['CENTRAL_PRES']),
+    // color: "white",
     // fillColor: colorStyle(cyclones['CENTRAL_PRES']),
     // Adjust radius
     radius: cycloneRadius(data[i]['CENTRAL_PRES'])
 
-    }).bindPopup("<h1>" + data[i]["NAME"] + "</h1> <hr> <h3>Central Pressure: " + data[i]["CENTRAL_PRES"] + "</h3>").addTo(myMap).on('mouseover',function(ev) {
+    }).bindPopup("<h3>" + data[i]["NAME"] + "</h3> <hr><h4>Central Pressure: " + data[i]["CENTRAL_PRES"]+" HPA"+ "</h4> \
+    <h4>Max Wind Speed: " + data[i]["MAX_WIND_SPD"]+" m/s" + "</h4>\
+    <h4>Wind Compass: " + data[i]["WIND_COMPASS"]+ "</h4><h4>Central Index: " + data[i]["CENTRAL_INDEX (CI)"]+ "</h4>").addTo(myMap).on('mouseover',function(ev) {
     ev.target.openPopup();
   })
 
 };
-//   for (var i = 0; i < cyclones.length; i++) {
-//     // Add circles to map
-//     L.circle(cyclones["LAT"], cyclones["LON"]), {
-//       fillOpacity: 0.75,
-//       color: "white",
-//       fillColor: colorStyle(cyclones['CENTRAL_PRES']),
-//       // Adjust radius
-//       radius: cyclones['CENTRAL_PRES']
-//     }.bindPopup("<h1>" + cyclones[i].name + "</h1> <hr> <h3>Points: " + cyclones[i].points + "</h3>").addTo(myMap).on('mouseover',function(ev) {
-//       ev.target.openPopup();
-//     });
-
-// };
-
-// //d3.json('')
-// // function for color
-// function colorStyle(point){
-//     // Conditionals for countries points
-//     var color = "";
-//     if (point > 200) {
-//       color = "yellow";
-//     }
-//     else if (point > 100) {
-//       color = "blue";
-//     }
-//     else if (point > 90) {
-//       color = "green";
-//     }
-//     else {
-//       color = "red";
-//     }
-//     return color;
-// }
-// });
-// // Loop through the cities array and create one marker for each city object
-// for (var i = 0; i < cyclones.length; i++) {
-//   // Add circles to map
-//   L.circle(cyclones["LAT"], cyclones["LON"]), {
-//     fillOpacity: 0.75,
-//     color: "white",
-//     fillColor: colorStyle(cyclones['CENTRAL_PRES']),
-//     // Adjust radius
-//     radius: cyclones['CENTRAL_PRES']
-//   }.bindPopup("<h1>" + cyclones[i].name + "</h1> <hr> <h3>Points: " + cyclones[i].points + "</h3>").addTo(myMap).on('mouseover',function(ev) {
-//     ev.target.openPopup();
-//   });
 });
