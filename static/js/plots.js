@@ -40,11 +40,14 @@ function displayLineGraph_cycType(cycloneData, cycloneName) {
     let lineData_actual = {
         x: cycloneTimes,
         y: cycloneTypes,
-        name: "Cyclone CYC Types Vs Time",
+        name: "Cyclone CYC Types",
         type: "scatter",
-        mode: "lines+markers"
+        mode: "lines+markers",
+        line: {
+            color: 'crimson'
+        }
     };
-      
+    //Cyclone CYC Types Vs Time
     // Place both data sets together in array
     let lineData = [lineData_actual];
 
@@ -140,7 +143,10 @@ function displayLineGraph_windSpeed(cycloneData, cycloneName) {
         y: cycloneWindSpeed,
         name: "Wind Speed Vs Time",
         type: "scatter",
-        mode: "lines+markers"
+        mode: "lines+markers",
+        line: {
+            color: 'rgb(255,20,147)'
+        }
     };
       
     // Place both data sets together in array
@@ -184,22 +190,46 @@ function displayScatterPlot_CentPres_WindSpeed(cycloneData, cycloneName) {
 
     // Plot with both lines and markers for each data point
     let lineData_actual = {
+        // x: cycloneCentralPressure,
+        // y: cycloneWindSpeed,
+        // name: "Central Pressure Vs Max Wind Speed",
+        // type: "scatter",
+        // mode: "markers",
+        // line: {
+        //     color: 'medium violet red',
+        //     width: 3
+        // }
         x: cycloneCentralPressure,
         y: cycloneWindSpeed,
         name: "Central Pressure Vs Max Wind Speed",
-        type: "scatter",
-        mode: "markers"
+        mode: "markers",
+        text: "Max Wind Speed",
+        marker: {
+            color: 'rgb(234, 153, 153)',
+            size: 30,
+            line: {
+                color: 'white',
+                width: 2
+            }
+        }
     };
       
     // Place both data sets together in array
     let lineData = [lineData_actual];
 
     // Set title for line graph and x and y axes
+    // let lineLayout = {
+    //      title: "Central Pressure Vs Max Wind Speed",
+    //      xaxis: { title: "Central Pressure (hPa)" },
+    //      yaxis: { title: "Max Wind Speed (m/s)" }
+    // };
     let lineLayout = {
-         title: "Central Pressure Vs Max Wind Speed",
-         xaxis: { title: "Central Pressure (hPa)" },
-         yaxis: { title: "Max Wind Speed (m/s)" }
-    };
+        title: "Central Pressure Vs Max Wind Speed",
+        xaxis: { title: "Central Pressure (hPa)" },
+        yaxis: { title: "Max Wind Speed (m/s)" }
+    }
+
+
     
     // Use plotly to display line graph at div ID "line2" with lineData and lineLayout
     Plotly.newPlot('line4', lineData, lineLayout);
