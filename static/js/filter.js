@@ -21,7 +21,7 @@ d3.json(url).then(function(response){
         {
             if (cyclone_name.includes(new_cyclone) == false)
             {
-                cyclone_name.push(cyclone_uppercase);
+                cyclone_name.push(new_cyclone);
             }
         }
         // else if (new_cyclone == "Noname")
