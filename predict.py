@@ -2,7 +2,8 @@ from flask_restful import Api, Resource, reqparse
 import numpy as np
 import joblib
 # Load prebuilt model
-CYCLONE_MODEL_SVM = joblib.load('cyclone_SVM.smd')
+CYCLONE_MODEL_SVM = joblib.load('training/cyclone_SVM.smd')
+CYCLONE_MODEL_KNN = joblib.load('training/cyclone_kNN.smd')
 
 # Create predict method
 class Predict(Resource):
@@ -24,5 +25,7 @@ class Predict(Resource):
         print("Old X_new =  ", X_new)
         # X_new = [2,1,1,3,6,6,8]
         print("New X_new = ", X_new)
-        out = {'Prediction (SVM Model)': CYCLONE_MODEL_SVM.predict([X_new])[0]}
+        out = {'Prediction (SVM Model)': CYCLONE_MODEL_SVM.predict([X_new])[0], 'Prediction (kNN Model)': CYCLONE_MODEL_KNN.predict([X_new])[0]}
+        # out2 = {'Prediction (kNN Model)': CYCLONE_MODEL_KNN.predict([X_new])[0]}
+        # out = {out1, out2}
         return out, 200
