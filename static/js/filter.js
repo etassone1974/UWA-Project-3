@@ -17,37 +17,37 @@ d3.json(url).then(function(response){
     let cyclone_data = response;
     for (let i=0; i < cyclone_data.length; i++) {
         let new_cyclone = cyclone_data[i]["NAME"];
-        if (new_cyclone == "noname")
-        { 
-            console.log("Skipping", new_cyclone);
-        }
-        else if (new_cyclone == "Noname")
+        if ((new_cyclone != "Noname") || (new_cyclone != "Unnamed"))
         {
-            console.log("Skipping", new_cyclone);
-        }
-        else if (new_cyclone == "Unnamed") 
-        {
-            console.log("Skipping", new_cyclone);
-        }
-        else if (new_cyclone == "unnamed")
-        {
-            console.log("Skipping", new_cyclone);
-        }
-        else if (new_cyclone == "UNNAMED")
-        {
-            console.log("Skipping", new_cyclone);
-        }
-        else 
-        {
-            let cyclone_uppercase = toTitleCase(new_cyclone);
-            // console.log("Accepted name:", cyclone_uppercase);
-            if (cyclone_name.includes(cyclone_uppercase) == false)
+            if (cyclone_name.includes(new_cyclone) == false)
             {
                 cyclone_name.push(cyclone_uppercase);
             }
-            
-            
         }
+        // else if (new_cyclone == "Noname")
+        // {
+        //     console.log("Skipping", new_cyclone);
+        // }
+        // else if (new_cyclone == "Unnamed") 
+        // {
+        //     console.log("Skipping", new_cyclone);
+        // }
+        // else if (new_cyclone == "unnamed")
+        // {
+        //     console.log("Skipping", new_cyclone);
+        // }
+        // else if (new_cyclone == "UNNAMED")
+        // {
+        //     console.log("Skipping", new_cyclone);
+        // }
+        // else 
+        // {
+        //     let cyclone_uppercase = toTitleCase(new_cyclone);
+        //     // console.log("Accepted name:", cyclone_uppercase);
+        //     if (cyclone_name.includes(cyclone_uppercase) == false)
+        //     {
+        //         cyclone_name.push(cyclone_uppercase);
+        //     }
     }
 
     cyclone_name.sort();
