@@ -44,26 +44,60 @@
             </div><!-- /.container-fluid -->
           </nav>
           <div class="container">
-            <div class="jumbotron" style="text-align: center">
+            <div class="container" style="text-align: center">
                 <h2>Cyclone Predictions</h2>
-                <h3>Enter Cyclone parameters</h3>
+                <h3>Enter parameters</h3>
             </div>
             <div class="row">
-                <div class="col-md-offset-2 col-md-8">
-                    <form method="POST" action="/send" role="form", name="petform">
+                <div class="col-md-offset-1 col-md-2">
+                    <form method="POST" action="/send" role="form", name="cycloneform">
                         <div class="form-group">
-                            <label for="inputName">Pet Name</label>
-                            <input type="text" class="form-control" id="inputName" name="petName" placeholder="Name">
+                            <label for="inputName">Surface Code</label>
+                            <input type="text" class="form-control" id="inputName" name="petName" placeholder="Surface Code">
                         </div>
                         <div class="form-group">
-                            <label for="inputLat">Pet Location Lat</label>
-                            <input type="text" class="form-control" id="inputLat" name="petLat" placeholder="Lat">
+                            <label for="cyctype">Cyclone Type</label>
+                            <input type="text" class="form-control" id="inputLat" name="petLat" placeholder="Cyclone Type">
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-md-offset-2 col-md-2">
+                        <form method="POST" action="/send" role="form", name="cycloneform"></form>
+                        <div class="form-group">
+                            <label for="inputlat">Latitude</label>
+                            <input type="text" class="form-control" id="inputLon" name="petLon" placeholder="Lat">
                         </div>
                         <div class="form-group">
-                            <label for="inputLon">Pet Location Lon</label>
-                            <input type="text" class="form-control" id="inputLon" name="petLon" placeholder="Lon">
+                          <label for="inputlon">Longitude</label>
+                          <input type="text" class="form-control" id="inputLon" name="petLon" placeholder="Lon">
                         </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-offset-2 col-md-2">
+                        <form method="POST" action="/send" role="form", name="cycloneform"></form>
+                        <div class="form-group">
+                          <label for="centpre">Central Pressure</label>
+                          <input type="text" class="form-control" id="inputLon" name="petLon" placeholder="Central Pressure">
+                        </div>
+                        <div class="form-group">
+                          <label for="maxwnd">Max Wind Speed</label>
+                          <input type="text" class="form-control" id="inputLon" name="petLon" placeholder="Max Wind Speed">
+                        </div>
+                      </div>
+                        <div class="row">
+                        <div class="col-md-offset-1 col-md-2">
+                        <form method="POST" action="/send" role="form", name="cycloneform"></form>
+                        <div class="form-group" style="margin-left: 40px;margin-right:-19px;">
+                          <label for="centindx">Central Index</label>
+                          <input type="text" class="form-control" id="inputLon" name="petLon" placeholder="Central Index">
+                        </div>
+                      </div>
+                      </div>
+                        <div class="row">
+                        <div class="col-md-offset-6 col-md-8">
                         <input type="submit" value="Predict" class="btn btn-default">
+                        </div>
+                        </div>
                     </form>
                 </div>
           
