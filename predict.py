@@ -17,6 +17,7 @@ class Predict(Resource):
         parser.add_argument('central_pres')
         parser.add_argument('max_wind_spd')
         parser.add_argument('central_index')
+        # parser.add_argument('wave_height')
         # Use parser to create dictionary of data input
         args = parser.parse_args() 
         # Convert input data to array

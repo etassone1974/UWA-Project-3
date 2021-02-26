@@ -39,6 +39,15 @@ def api():
 
 @app.route("/ml")
 def ml():
+    if request.method == 'POST':
+        surface_code = request.form.get("surface_code")
+        cyclone_type = request.form.get("cyclone_type")
+        latitude = request.form.get("latitude")
+        longitude = request.form.get("longitude")
+        central_pressure = request.form.get("central_pressure")
+        max_wind_speed = request.form.get("max_wind_speed")
+        central_index = request.form.get("central_index")
+        wave_height = request.form.get("wave_height")
     return render_template("ml.html")
 
 @app.route("/aboutus")
@@ -53,8 +62,8 @@ def run_example():
 
 @app.route('/parameters/<surface_code>&<cyc_type>&<lat>&<lon>&<central_pres>&<max_wind_spd>&<central_index>')
 def get_prediction(surface_code=1, cyc_type=20, lat=-11, lon=92.6, central_pres=1001, max_wind_spd=12.9, central_index=2.064004808):
-    # url = 'http://127.0.0.1/predict'
-    url = 'https://et-cyclonesau.herokuapp.com/predict'
+    url = 'http://127.0.0.1/predict'
+    # url = 'https://et-cyclonesau.herokuapp.com/predict'
     body = {
         "surface_code": surface_code,
         "cyc_type": cyc_type,
