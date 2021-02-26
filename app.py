@@ -60,8 +60,8 @@ def run_example():
     res = run_request()
     return res
 
-@app.route('/parameters/<surface_code>&<cyc_type>&<lat>&<lon>&<central_pres>&<max_wind_spd>&<central_index>')
-def get_prediction(surface_code=1, cyc_type=20, lat=-11, lon=92.6, central_pres=1001, max_wind_spd=12.9, central_index=2.064004808):
+@app.route('/parameters/<surface_code>&<cyc_type>&<lat>&<lon>&<central_pres>&<max_wind_spd>&<central_index>&<wave_height>')
+def get_prediction(surface_code=1, cyc_type=20, lat=-11, lon=92.6, central_pres=1001, max_wind_spd=12.9, central_index=2.064004808, wave_height=3.337484):
     url = 'http://127.0.0.1/predict'
     # url = 'https://et-cyclonesau.herokuapp.com/predict'
     body = {
@@ -71,7 +71,8 @@ def get_prediction(surface_code=1, cyc_type=20, lat=-11, lon=92.6, central_pres=
         "lon": lon,
         "central_pres" : central_pres,
         "max_wind_spd" : max_wind_spd,
-        "central_index" : central_index
+        "central_index" : central_index,
+        "wave_height" : wave_height
     }
     response = requests.post(url, data=body)
     return response.json()

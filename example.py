@@ -10,7 +10,8 @@ def run_request():
         "lon": 130.98,
         "central_pres" : 994,
         "max_wind_spd" : 20.6,
-        "central_index" : 2.721183568
+        "central_index" : 2.721183568,
+        "wave_height" : 4.834374
     }    
     response = requests.post(url, data=body)
     return response.json()
