@@ -26,6 +26,4 @@ class Predict(Resource):
         # X_new = [2,1,1,3,6,6,8]
         print("New X_new = ", X_new)
         out = {'Prediction (SVM Model)': CYCLONE_MODEL_SVM.predict([X_new])[0], 'Prediction (kNN Model)': CYCLONE_MODEL_KNN.predict([X_new])[0]}
-        # out2 = {'Prediction (kNN Model)': CYCLONE_MODEL_KNN.predict([X_new])[0]}
-        # out = {out1, out2}
         return out, 200
