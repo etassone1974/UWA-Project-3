@@ -37,7 +37,7 @@ def plots():
 def api():
     return render_template("api.html")
 
-@app.route("/ml", methods=['GET', 'POST'])
+@app.route("/ml", methods=['POST'])
 def ml():
     if request.method == 'POST':
         surface_code = request.form.get("surface_code")

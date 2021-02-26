@@ -53,7 +53,7 @@ function displayLineGraph_cycType(cycloneData, cycloneName) {
 
     // Set title for line graph and x and y axes
     let lineLayout = {
-         title: "Cyclone CYC Types Vs Time",
+         title: "CYC Types Vs Time",
          xaxis: { title: "Time" },
          yaxis: { title: "Cyclone Types" }
     };
