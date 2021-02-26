@@ -37,16 +37,8 @@ def plots():
 def api():
     return render_template("api.html")
 
-@app.route("/ml", methods=['POST'])
+@app.route("/ml")
 def ml():
-    if request.method == 'POST':
-        surface_code = request.form.get("surface_code")
-        cyclone_type = request.form.get("cyclone_type")
-        latitude = request.form.get("latitude")
-        longitude = request.form.get("longitude")
-        central_pressure = request.form.get("central_pressure")
-        max_wind_speed = request.form.get("max_wind_speed")
-        central_index = request.form.get("central_index")
     return render_template("ml.html")
 
 @app.route("/aboutus")
