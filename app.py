@@ -47,6 +47,7 @@ def ml():
         central_pressure = request.form.get("central_pressure")
         max_wind_speed = request.form.get("max_wind_speed")
         central_index = request.form.get("central_index")
+        wave_height = request.form.get("wave_height")
     return render_template("ml.html")
 
 @app.route("/aboutus")
