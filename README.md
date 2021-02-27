@@ -27,5 +27,5 @@
         "central_index" : 2.064004808,
         "wave_height" : 3.337484
   + Other values for the parameters can be substituted for other predictions linked by ampersands (&)
-  + For example http://127.0.0.1/parameters/2&30&-12.54&130.98&994&20.6&2.721183568&4.834374
+  + For example http://127.0.0.1/parameters/2&1&1&3&6&6&8&7
   + For some reason, the /example and /parameters routes work on the localhost, but not on the Heroku app deloyment (inexplicable).
