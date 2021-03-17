@@ -60,6 +60,8 @@ def ml():
         return render_template("ml.html", out1=f"Prediction for SVM = {pred1}", out2=f"Prediction for KNN = {pred2}", out3=f"Prediction for Random Forest = {pred3}")
     else:
         return render_template("ml.html")
+    
+
 @app.route("/aboutus")
 def aboutus():
     return render_template("aboutus.html")
