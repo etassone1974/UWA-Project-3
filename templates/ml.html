@@ -50,46 +50,50 @@
             </div>
             <div class="row">
                 <div class="col-md-offset-1 col-md-2">
-                    <form method="POST" action="/send" role="form", name="cycloneform">
+                    <form method="POST" action="/ml" role="form", name="cycloneform">
                         <div class="form-group">
-                            <label for="inputName">Surface Code</label>
-                            <input type="text" class="form-control" id="inputName" name="petName" placeholder="Surface Code">
+                            <label for="surface_code">Surface Code</label>
+                            <input type="text" class="form-control" id="inputSurfaceCode" name="surface_code" placeholder="Surface Code">
                         </div>
                         <div class="form-group">
-                            <label for="cyctype">Cyclone Type</label>
-                            <input type="text" class="form-control" id="inputLat" name="petLat" placeholder="Cyclone Type">
+                            <label for="cyclone_type">Cyclone Type</label>
+                            <input type="text" class="form-control" id="inputCycloneType" name="cyclone_type" placeholder="Cyclone Type">
                         </div>
                         </div>
                         <div class="row">
                         <div class="col-md-offset-2 col-md-2">
-                        <form method="POST" action="/send" role="form", name="cycloneform"></form>
+                        <!-- <form method="POST" action="/ml" role="form", name="cycloneform"></form> -->
                         <div class="form-group">
-                            <label for="inputlat">Latitude</label>
-                            <input type="text" class="form-control" id="inputLon" name="petLon" placeholder="Lat">
+                            <label for="latitude">Latitude</label>
+                            <input type="text" class="form-control" id="inputLatitude" name="latitude" placeholder="Lat">
                         </div>
                         <div class="form-group">
-                          <label for="inputlon">Longitude</label>
-                          <input type="text" class="form-control" id="inputLon" name="petLon" placeholder="Lon">
+                          <label for="longitude">Longitude</label>
+                          <input type="text" class="form-control" id="inputLongitude" name="longitude" placeholder="Lon">
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-md-offset-2 col-md-2">
-                        <form method="POST" action="/send" role="form", name="cycloneform"></form>
+                        <!-- <form method="POST" action="/ml" role="form", name="cycloneform"></form> -->
                         <div class="form-group">
-                          <label for="centpre">Central Pressure</label>
-                          <input type="text" class="form-control" id="inputLon" name="petLon" placeholder="Central Pressure">
+                          <label for="central_pressure">Central Pressure</label>
+                          <input type="text" class="form-control" id="inputCentralPressure" name="central_pressure" placeholder="Central Pressure">
                         </div>
                         <div class="form-group">
-                          <label for="maxwnd">Max Wind Speed</label>
-                          <input type="text" class="form-control" id="inputLon" name="petLon" placeholder="Max Wind Speed">
+                          <label for="max_wind_speed">Max Wind Speed</label>
+                          <input type="text" class="form-control" id="inputMaxWindSpeed" name="max_wind_speed" placeholder="Max Wind Speed">
                         </div>
                       </div>
                         <div class="row">
                         <div class="col-md-offset-1 col-md-2">
-                        <form method="POST" action="/send" role="form", name="cycloneform"></form>
+                        <!-- <form method="POST" action="/ml" role="form", name="cycloneform"></form> -->
                         <div class="form-group" style="margin-left: 40px;margin-right:-19px;">
-                          <label for="centindx">Central Index</label>
-                          <input type="text" class="form-control" id="inputLon" name="petLon" placeholder="Central Index">
+                          <label for="central_index">Central Index</label>
+                          <input type="text" class="form-control" id="inputCentralIndex" name="central_index" placeholder="Central Index">
+                        </div>
+                        <div class="form-group" style="margin-left: 40px;margin-right:-19px;">
+                          <label for="wave_height">Wave Height</label>
+                          <input type="text" class="form-control" id="inputWaveHeight" name="wave_height" placeholder="Wave Height">
                         </div>
                       </div>
                       </div>
@@ -98,7 +102,15 @@
                         <input type="submit" value="Predict" class="btn btn-default">
                         </div>
                         </div>
-                    </form>
+                      </form>
+                      <br> 
+                      <div class="container" style="text-align: center; font-size:1.5em">
+                      <b>{{out1}}</b><br>
+                        <br>
+                        <b>{{out2}}</b><br>
+                        <br>
+                        <b>{{out3}}</b><br>
+                      </div>
                 </div>
           
 
