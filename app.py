@@ -8,6 +8,7 @@ import requests
 import os
 import joblib
 import json
+import pickle
 
 # Create APP
 app = Flask(__name__)
@@ -37,7 +38,7 @@ def plots():
 def api():
     return render_template("api.html")
 
-@app.route("/ml")
+@app.route("/ml", methods=["POST","GET"])
 def ml():
     if request.method == 'POST':
         surface_code = request.form.get("surface_code")
@@ -48,8 +49,17 @@ def ml():
         max_wind_speed = request.form.get("max_wind_speed")
         central_index = request.form.get("central_index")
         wave_height = request.form.get("wave_height")
-    return render_template("ml.html")
-
+        CYCLONE_MODEL_SVM = joblib.load('training/cyclone_SVM.smd')
+        CYCLONE_MODEL_KNN = joblib.load('training/cyclone_KNN.smd')
+        CYCLONE_MODEL_RF = joblib.load('training/cyclone_RF.smd')
+        X_string =[surface_code,cyclone_type,latitude, longitude, central_pressure, max_wind_speed, central_index, wave_height]
+        X_new=[float(x) for x in X_string]
+        pred1 = CYCLONE_MODEL_SVM.predict([X_new])[0]
+        pred2 = CYCLONE_MODEL_KNN.predict([X_new])[0]
+        pred3 = CYCLONE_MODEL_RF.predict([X_new])[0]
+        return render_template("ml.html", out1=f"Prediction for SVM = {pred1}", out2=f"Prediction for KNN = {pred2}", out3=f"Prediction for Random Forest = {pred3}")
+    else:
+        return render_template("ml.html")
 @app.route("/aboutus")
 def aboutus():
     return render_template("aboutus.html")
