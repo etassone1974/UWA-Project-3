@@ -27,4 +27,4 @@
         "wave_height" : 3.337484
   + https://et-cyclonesau.herokuapp.com/parameters/1&20&-11&92.6&1001&12.9&2.064004808&3.337484
   + Other values for the parameters can be substituted for other predictions linked by ampersands (&)
-  + For example hhttps://et-cyclonesau.herokuapp.com/parameters/2&1&1&3&6&6&8&7
+  + For example https://et-cyclonesau.herokuapp.com/parameters/2&1&1&3&6&6&8&7
